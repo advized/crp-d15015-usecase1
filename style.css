@@ -1,0 +1,169 @@
+html, body {
+  height: 100%;
+  background-color: #222;
+  overflow: hidden;
+}
+body.modal-open {
+  margin-right: 0px;
+}
+.modal-header {
+ height: 40px;
+}
+.modal-content {
+  /*background-color:rgba(255,255,255,0.9);*/
+}
+
+
+.container {
+  height: 100%;
+  padding-left: 1px;
+  padding-right: 1px;
+  max-width: 1500px;
+}
+
+.row#maps {
+  margin: 0px 0px;
+  height: 100%;
+}
+
+
+.modal button {
+  opacity:0.7;
+}
+.modal button:hover {
+  opacity:1;
+}
+.modal .glyphicon {
+ float:right; 
+}
+
+.overlays button {
+  margin-bottom: -5px;
+  text-align: left;
+  padding-left: 5px;
+  border-radius: 0px;
+  border-color: rgba(0,0,0,0);
+}
+.overlays button:hover {
+  border-color: rgba(0,0,0,0);
+}
+
+h5.filter{
+  margin-top: 5px;
+  text-align: right;
+}
+.layers h6{
+  margin-top: 30px;
+}
+
+
+.geo-filters button, .cat-filters button{
+  margin-bottom: 3px;
+}
+.row#timeline {
+  margin: 0px 0px;
+  height: 55px;
+}
+div.btn-group {
+  margin-left: -13px;
+}
+h3#date {
+  color: #ddd;
+  margin: 11px 0px;
+}
+#map-11, #map-12 {
+  /*border-bottom: 3px solid black;*/
+}
+#map-11, #map-21 {
+  /*border-right: 3px solid black;*/
+}
+
+.col-sm-12 {
+  height: 100%;
+  border: 2px solid #222;
+}
+
+button#layers {
+  position: absolute;
+  z-index: 1000;
+  left: 47%;
+  top: 0px;
+  background-color: #222;
+  color: #eee;
+  border: 1px solid #191919; 
+  border-radius: 0px 0px 10px 10px
+}
+
+button#layers:hover {
+  position: absolute;
+  z-index: 1000;
+  left: 47%;
+  top: 0px;
+  background-color: #333;
+  color: #eee;
+  border: 1px solid #191919; 
+  border-radius: 0px 0px 10px 10px
+}
+
+
+button#about {
+  position: absolute;
+  z-index: 1000;
+  width: 85px;
+  left: 47%;
+  bottom: 0px;
+  /*background-color: #222;
+  color: #eee;
+  border: 1px solid #191919; */
+  border-radius: 10px 10px 0px 0px
+}
+
+
+
+button#pushpin {
+  position: absolute;
+  border-radius: 15px 0px 0px 0px;
+  z-index: 1000;
+  right: 1px;
+  bottom: 1px;
+}
+
+button#pushpin:hover {
+  position: absolute;
+  /*border: 1px solid #f00;*/
+  background-color: #5CB85C;
+  background-color: #b85c5c;
+  border-color: #a24848;
+  z-index: 1000;
+  right: 1px;
+  bottom: 1px;
+}
+
+
+button#pushpin.active {
+  position: absolute;
+  /*border: 1px solid #f00;*/
+  background-color: #5CB85C;
+  background-color: #b85c5c;
+  border-color: #a24848;
+  z-index: 1000;
+  right: 1px;
+  bottom: 1px;
+}
+
+.modal {
+  overflow: hidden;
+}
+
+div#time-button button {
+  background-color: #eee;
+  border: 1px solid #aaa; 
+  color: #222;
+}
+
+div#time-button button:hover {
+  background-color: #ccc;
+  border: 1px solid #aaa; 
+  color: #222;
+}
+

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="/assets/ico/favicon.png">
+
+    <title>Demo CRP</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/dist/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles -->
+    <link href="style.css" rel="stylesheet">
+
+    <Link href='//api.tiles.mapbox.com/mapbox.js/v1.3.1/mapbox.css' rel='stylesheet' />
+
+    <!--[if lte IE 8]>
+      <link href='//api.tiles.mapbox.com/mapbox.js/v1.3.1/mapbox.ie.css' rel='stylesheet' />
+    <![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="/assets/js/html5shiv.js"></script>
+      <script src="/assets/js/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <button id="layers" type="button" data-toggle="modal" href="#myModal" class="btn btn-default">
+      <span class="glyphicon glyphicon-globe"></span> Layers
+    </button>
+    <button id="about" type="button" data-toggle="modal" href="#myModal" class="btn btn-danger">
+      About
+    </button>
+    <div class="container">
+      <div class="row" id="maps">
+        <div id="map-11" class="col-sm-12">
+        </div>
+      </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h5 class="modal-title text-muted">CRP D15015 - DEMO</h5>
+          </div>
+          <div class="modal-body">
+            <div class='container'>
+
+              <div class="row geo-filters">
+                <div class="col-sm-2">
+                  <h5 class="filter text-muted">Emergency</h5>
+                </div>
+                <div class="col-sm-10">
+                  <button type="button" class="btn btn-primary btn-xs">Fukushima</button>
+                  <button type="button" class="btn btn-primary btn-xs">Tchernobyl</button>
+                  <button type="button" class="btn btn-primary btn-xs">CRP-demo</button>
+                </div>
+              </div> 
+
+              <div class="row cat-filters">
+                <div class="col-sm-2">
+                  <h5 class="filter text-muted">Category</h5>
+                </div>
+                <div class="col-sm-10">
+                  <button type="button" class="btn btn-primary btn-xs">Radionuclides plume</button>
+                  <button type="button" class="btn btn-primary btn-xs">Foodstuffs</button>
+                  <button type="button" class="btn btn-primary btn-xs">Toponymy</button>
+                  <button type="button" class="btn btn-primary btn-xs">Relief</button>
+                  <button type="button" class="btn btn-primary btn-xs">Water</button>
+                  <button type="button" class="btn btn-primary btn-xs">Landuse</button>
+                  <button type="button" class="btn btn-primary btn-xs">Imagery</button>
+                  <button type="button" class="btn btn-primary btn-xs">Meteorological</button>
+                  <button type="button" class="btn btn-primary btn-xs">Hydrography</button>
+                </div>
+              </div>
+
+            <div class="row layers">
+              <h6 class="text-muted"><em>Filter available layers by clicking values above.</em></h6>
+              <div class='overlays'>
+                <button type="button" class="btn btn-primary btn-xs btn-block">Radionuclides plume<a href="#"><span class="glyphicon glyphicon-search"></span></a></button>
+                <button type="button" class="btn btn-primary btn-xs btn-block">Data samples</button>
+                <button type="button" class="btn btn-primary btn-xs btn-block">Very High Resolution Imagery</button>
+                <button type="button" class="btn btn-primary btn-xs btn-block">Toponymy</button>
+              </div>
+            </div>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/assets/js/jquery-2.0.3.min.js"></script>
+    <script src="/dist/js/bootstrap.min.js"></script>
+    <script src='//api.tiles.mapbox.com/mapbox.js/v1.3.1/mapbox.js'></script>
+    <script type='text/javascript'>
+      <!-- osm normal examples.map-9ijuk24y-->
+      var map11 = L.mapbox.map('map-11', 'examples.map-y7l23tes',
+                               {attributionControl: false,
+                                zoomControl: false})
+          .setView([49.1458, 12.81], 8);
+
+      var time_series = [    
+      L.mapbox.tileLayer('franckalbinet.knf9yk88'), // 0
+      L.mapbox.tileLayer('franckalbinet.e91t89vr'), // 1
+      L.mapbox.tileLayer('franckalbinet.vv1525ya'), // 2
+      L.mapbox.tileLayer('franckalbinet.ydev5gpp'), // 3 
+      L.mapbox.tileLayer('franckalbinet.32x1c659'), // 4
+      L.mapbox.tileLayer('franckalbinet.9u5oth66'), // 5
+      L.mapbox.tileLayer('franckalbinet.6d87drwh')]; // 6
+
+/*
+      var myVar=setInterval(function(){myTimer()},1000);
+      var i = 0;
+
+      function myTimer(){
+        if(i<time_series.length){
+         map11.addLayer(time_series[i]);
+         i++;
+        }
+        else{
+          for(var j=1; j < time_series.length; j++){
+            map11.removeLayer(time_series[j]);
+          }
+          i = 1;
+        }
+      }
+*/
+      $("button").click(function(e) {
+             //do something
+             /*e.stopPropagation();*/
+      })
+
+      $(window).resize(function() {
+        winHeight = $(window).height();
+        $(".row#maps").css("height", (winHeight-55)/2);
+      });
+
+    </script>
+  </body>
+</html>
