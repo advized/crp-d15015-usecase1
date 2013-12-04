@@ -7,7 +7,7 @@
     <meta name="author" content="">
     <link rel="shortcut icon" href="/assets/ico/favicon.png">
 
-    <title>Demo CRP</title>
+    <title>demo-timeseries</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/dist/css/bootstrap.css" rel="stylesheet">
@@ -29,72 +29,39 @@
   </head>
 
   <body>
+    <!--
     <button id="layers" type="button" data-toggle="modal" href="#myModal" class="btn btn-default">
       <span class="glyphicon glyphicon-globe"></span> Layers
     </button>
+    -->
+
+    <div class="container">
     <button id="about" type="button" data-toggle="modal" href="#myModal" class="btn btn-danger">
       About
     </button>
-    <div class="container">
+   <div id="animation-control" class="btn-group">
+     <button type="button" class="btn btn-default">
+       <span class="glyphicon glyphicon-play"></span></button>
+     <button type="button" class="btn btn-default"><strong>2013/12/01</strong></button>
+     <button id="timeline" button" class="btn btn-default">
+      <div class="progress">
+        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+          <span class="sr-only">40% Complete (success)</span>
+        </div>
+      </div>
+     </button>
+   </div>
+
+
+
       <div class="row" id="maps">
-        <div id="map-11" class="col-sm-12">
+        <div id="map" class="col-sm-12">
         </div>
       </div>
     </div>
-    <!-- Modal -->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h5 class="modal-title text-muted">CRP D15015 - DEMO</h5>
-          </div>
-          <div class="modal-body">
-            <div class='container'>
 
-              <div class="row geo-filters">
-                <div class="col-sm-2">
-                  <h5 class="filter text-muted">Emergency</h5>
-                </div>
-                <div class="col-sm-10">
-                  <button type="button" class="btn btn-primary btn-xs">Fukushima</button>
-                  <button type="button" class="btn btn-primary btn-xs">Tchernobyl</button>
-                  <button type="button" class="btn btn-primary btn-xs">CRP-demo</button>
-                </div>
-              </div> 
-
-              <div class="row cat-filters">
-                <div class="col-sm-2">
-                  <h5 class="filter text-muted">Category</h5>
-                </div>
-                <div class="col-sm-10">
-                  <button type="button" class="btn btn-primary btn-xs">Radionuclides plume</button>
-                  <button type="button" class="btn btn-primary btn-xs">Foodstuffs</button>
-                  <button type="button" class="btn btn-primary btn-xs">Toponymy</button>
-                  <button type="button" class="btn btn-primary btn-xs">Relief</button>
-                  <button type="button" class="btn btn-primary btn-xs">Water</button>
-                  <button type="button" class="btn btn-primary btn-xs">Landuse</button>
-                  <button type="button" class="btn btn-primary btn-xs">Imagery</button>
-                  <button type="button" class="btn btn-primary btn-xs">Meteorological</button>
-                  <button type="button" class="btn btn-primary btn-xs">Hydrography</button>
-                </div>
-              </div>
-
-            <div class="row layers">
-              <h6 class="text-muted"><em>Filter available layers by clicking values above.</em></h6>
-              <div class='overlays'>
-                <button type="button" class="btn btn-primary btn-xs btn-block">Radionuclides plume<a href="#"><span class="glyphicon glyphicon-search"></span></a></button>
-                <button type="button" class="btn btn-primary btn-xs btn-block">Data samples</button>
-                <button type="button" class="btn btn-primary btn-xs btn-block">Very High Resolution Imagery</button>
-                <button type="button" class="btn btn-primary btn-xs btn-block">Toponymy</button>
-              </div>
-            </div>
-          </div>
-        </div><!-- /.modal-content -->
-      </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
-
-
+    <!-- Modal  TBD -->
+ 
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -104,53 +71,37 @@
     <script src='//api.tiles.mapbox.com/mapbox.js/v1.3.1/mapbox.js'></script>
     <script type='text/javascript'>
       <!-- osm normal examples.map-9ijuk24y-->
-      var map11 = L.mapbox.map('map-11', 'examples.map-y7l23tes',
-                               {attributionControl: false,
-                                zoomControl: false})
-          .setView([48.9, 13], 7);
+      var map = L.mapbox.map('map', 'examples.map-y7l23tes',
+                             {attributionControl: false,
+                              zoomControl: true})
+                        .setView([48.9, 13], 7);
 
+      //L.tileLayer('http://advized.org:8888/v2/particles/{z}/{x}/{y}.png').addTo(map11);
 
-      L.tileLayer('http://advized.org:8888/v2/particles/{z}/{x}/{y}.png').addTo(map11);
-
-/*
-      map11.addLayer(L.tileLayer('http://advized.org:8888/map/particles/{z}/{x}/{y}.png')); */
-
-/*
       var time_series = [    
-      L.mapbox.tileLayer('franckalbinet.knf9yk88'), // 0
-      L.mapbox.tileLayer('franckalbinet.e91t89vr'), // 1
-      L.mapbox.tileLayer('franckalbinet.vv1525ya'), // 2
-      L.mapbox.tileLayer('franckalbinet.ydev5gpp'), // 3 
-      L.mapbox.tileLayer('franckalbinet.32x1c659'), // 4
-      L.mapbox.tileLayer('franckalbinet.9u5oth66'), // 5
-      L.mapbox.tileLayer('franckalbinet.6d87drwh')]; // 6
-*/
-/*
+      L.tileLayer('http://advized.org:8888/v2/particles_20131201/{z}/{x}/{y}.png'), // 0
+      L.tileLayer('http://advized.org:8888/v2/particles_20131202/{z}/{x}/{y}.png'), // 1
+      L.tileLayer('http://advized.org:8888/v2/particles_20131203/{z}/{x}/{y}.png'), // 2
+      L.tileLayer('http://advized.org:8888/v2/particles_20131204/{z}/{x}/{y}.png'), // 3
+      L.tileLayer('http://advized.org:8888/v2/particles_20131205/{z}/{x}/{y}.png'), // 4
+      L.tileLayer('http://advized.org:8888/v2/particles_20131206/{z}/{x}/{y}.png'), // 5
+      L.tileLayer('http://advized.org:8888/v2/particles_20131207/{z}/{x}/{y}.png')]; // 6
+
       var myVar=setInterval(function(){myTimer()},1000);
       var i = 0;
 
       function myTimer(){
         if(i<time_series.length){
-         map11.addLayer(time_series[i]);
+         map.addLayer(time_series[i]);
          i++;
         }
         else{
           for(var j=1; j < time_series.length; j++){
-            map11.removeLayer(time_series[j]);
+            map.removeLayer(time_series[j]);
           }
           i = 1;
         }
       }
-*/
-      $("button").click(function(e) {
-             //do something
-             /*e.stopPropagation();*/
-      })
-
-      $(window).resize(function() {
-        winHeight = $(window).height();
-        $(".row#maps").css("height", (winHeight-55)/2);
-      });
 
     </script>
   </body>
