@@ -107,8 +107,15 @@
       var map11 = L.mapbox.map('map-11', 'examples.map-y7l23tes',
                                {attributionControl: false,
                                 zoomControl: false})
-          .setView([49.1458, 12.81], 8);
+          .setView([48.9, 13], 7);
 
+
+      L.tileLayer('http://advized.org:8888/v2/particles/{z}/{x}/{y}.png').addTo(map11);
+
+/*
+      map11.addLayer(L.tileLayer('http://advized.org:8888/map/particles/{z}/{x}/{y}.png')); */
+
+/*
       var time_series = [    
       L.mapbox.tileLayer('franckalbinet.knf9yk88'), // 0
       L.mapbox.tileLayer('franckalbinet.e91t89vr'), // 1
@@ -117,7 +124,7 @@
       L.mapbox.tileLayer('franckalbinet.32x1c659'), // 4
       L.mapbox.tileLayer('franckalbinet.9u5oth66'), // 5
       L.mapbox.tileLayer('franckalbinet.6d87drwh')]; // 6
-
+*/
 /*
       var myVar=setInterval(function(){myTimer()},1000);
       var i = 0;
