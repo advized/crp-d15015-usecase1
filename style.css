@@ -48,6 +48,7 @@ button#timeline {
 }
 .progress-bar-success {
   background-color: #333;
+  width: 0%;
 }
 
 button#about {
