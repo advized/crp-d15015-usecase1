@@ -26,16 +26,28 @@ div#animation-control {
   position:absolute;
   z-index: 1000;
   left: 37%;
-  bottom: 10px;
+  bottom: 30px;
+}
+div#animation-control button {
+  background-color: rgba(255,255,255,1);
+}
+
+button#date {
+  pointer-events: none;
 }
 
 button#timeline {
+  pointer-events: none;
   width: 300px;
 }
+
 .progress {
   margin: 6px;
   height: 8px;
   border-radius: 2px;
+}
+.progress-bar-success {
+  background-color: #333;
 }
 
 button#about {

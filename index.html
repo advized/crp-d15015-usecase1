@@ -40,12 +40,12 @@
       About
     </button>
    <div id="animation-control" class="btn-group">
-     <button type="button" class="btn btn-default">
+     <button id="play-pause" type="button" class="btn btn-default">
        <span class="glyphicon glyphicon-play"></span></button>
-     <button type="button" class="btn btn-default"><strong>2013/12/01</strong></button>
+     <button id="date" type="button" class="btn btn-default"><strong>2013/12/01</strong></button>
      <button id="timeline" button" class="btn btn-default">
       <div class="progress">
-        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
           <span class="sr-only">40% Complete (success)</span>
         </div>
       </div>
@@ -67,16 +67,34 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="/assets/js/jquery-2.0.3.min.js"></script>
+    <script src="/assets/js/jquery.timer.js"></script>
+
     <script src="/dist/js/bootstrap.min.js"></script>
     <script src='//api.tiles.mapbox.com/mapbox.js/v1.3.1/mapbox.js'></script>
     <script type='text/javascript'>
-      <!-- osm normal examples.map-9ijuk24y-->
+      /*osm normal examples.map-9ijuk24y*/
+
+      var anim_ctl_status = false; 
+      $("#play-pause").click(function() {
+        if (anim_ctl_status) {
+          $("#play-pause span").attr('class', 'glyphicon glyphicon-play');
+          timer.pause();
+          anim_ctl_status = false; 
+        }
+        else {
+          $("#play-pause span").attr('class', 'glyphicon glyphicon-pause');
+          timer.play();
+          anim_ctl_status = true; 
+        }
+      });
+
+
       var map = L.mapbox.map('map', 'examples.map-y7l23tes',
                              {attributionControl: false,
                               zoomControl: true})
                         .setView([48.9, 13], 7);
 
-      //L.tileLayer('http://advized.org:8888/v2/particles/{z}/{x}/{y}.png').addTo(map11);
+      /*L.tileLayer('http://advized.org:8888/v2/particles/{z}/{x}/{y}.png').addTo(map11);*/
 
       var time_series = [    
       L.tileLayer('http://advized.org:8888/v2/particles_20131201/{z}/{x}/{y}.png'), // 0
@@ -86,23 +104,45 @@
       L.tileLayer('http://advized.org:8888/v2/particles_20131205/{z}/{x}/{y}.png'), // 4
       L.tileLayer('http://advized.org:8888/v2/particles_20131206/{z}/{x}/{y}.png'), // 5
       L.tileLayer('http://advized.org:8888/v2/particles_20131207/{z}/{x}/{y}.png')]; // 6
+      
+      var dates = ['2013/12/01', '2013/12/02', '2013/12/03', '2013/12/04', '2013/12/05', '2013/12/06', '2013/12/07'];
 
-      var myVar=setInterval(function(){myTimer()},1000);
+
+      var i = 0;
+      var timer = $.timer(function() {
+            if(i<time_series.length){
+             map.addLayer(time_series[i]);
+             $( "button#date strong").text(dates[i]);
+             i++;
+            }
+            else{
+              for(var j=1; j < time_series.length; j++){
+                map.removeLayer(time_series[j]);
+                $( "button#date strong").text(dates[0]);
+              }
+              i = 1;
+            }
+        }, 1000, false);
+
+/*
+      var myVar=setInterval(function(){myTimer()},2000);
       var i = 0;
 
-      function myTimer(){
+        function myTimer(){
         if(i<time_series.length){
          map.addLayer(time_series[i]);
+         $( "button#date strong").text(dates[i]);
          i++;
         }
         else{
           for(var j=1; j < time_series.length; j++){
             map.removeLayer(time_series[j]);
+            $( "button#date strong").text(dates[0]);
           }
           i = 1;
         }
       }
-
+*/
     </script>
   </body>
 </html>
